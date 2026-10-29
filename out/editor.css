@@ -115,3 +115,36 @@ body {
 .progress-bar progress {
     background-color: #88bdf2; /* Light blue background for unfilled progress */
 }
+
+/** When on mobile phone :) */
+@media (max-width: 768px), (orientation: portrait) {
+    body {
+        height: auto;
+        overflow: auto;
+    }
+
+    #container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    #editor {
+        flex: none;
+        height: 50vh; /* Takes up top half of the screen */
+        margin-right: 0;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    #goals-panel {
+        position: static;
+        flex: none;
+        width: 100%;
+        height: auto;
+        max-height: none;
+        border-left: none;
+        border-top: 1px solid #ccc;
+        right: auto;
+        top: auto;
+    }
+}
