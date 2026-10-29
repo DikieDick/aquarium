@@ -1,5 +1,7 @@
 /* Custom styles for the waterproof editor */
 
+
+
 body {
     margin: 0;
     padding: 10px;
@@ -65,7 +67,7 @@ body {
     border-bottom: 1px solid var(--vscode-panel-border);
     padding-bottom: 8px;
     margin-bottom: 8px;
-    overflow-y: auto;
+    /* overflow-y: auto; */
 }
 
 #goals-panel #messages {
@@ -119,32 +121,43 @@ body {
 /** When on mobile phone :) */
 @media (max-width: 768px), (orientation: portrait) {
     body {
-        height: auto;
-        overflow: auto;
+        height: 100dvh; /* Use exact dynamic viewport height */
+        padding: 5px;   /* Reduce body padding to maximize space */
+        overflow: hidden; /* Prevent the body from double-scrolling */
     }
 
     #container {
         flex-direction: column;
-        height: auto;
+        height: 100%;
+        min-height: 0;
     }
 
     #editor {
-        flex: none;
-        height: 50vh; /* Takes up top half of the screen */
+        flex: 0 0 38px; /* Fixed mobile height for editor, or adjust as needed */
+        height: 38dvh;
+        min-height: 26rem;
         margin-right: 0;
-        margin-bottom: 15px;
         border-bottom: 1px solid #ccc;
     }
 
     #goals-panel {
         position: static;
-        flex: none;
+        flex: 1; /* Takes up the remaining space dynamically */
         width: 100%;
         height: auto;
+        min-height: 0; /* Crucial for nested flex scrolling */
         max-height: none;
         border-left: none;
         border-top: 1px solid #ccc;
         right: auto;
         top: auto;
+        overflow-y: auto; /* Allows goals to scroll internally if they are long */
+        margin-bottom: 0;
+        padding-bottom: 5px;
+    }
+
+    #exercise-toolbar {
+        margin-top: auto; /* Pushes dropdown neatly to the bottom of the panel */
+        padding: 5px 0 0 0;
     }
 }
